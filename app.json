@@ -1,0 +1,128 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "link.homewizard",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "HomeWizard Link",
+    "nl": "HomeWizard Link"
+  },
+  "description": {
+    "en": "Link your Link to Homey",
+    "nl": "Koppel je Link aan Homey"
+  },
+  "category": [
+    "security"
+  ],
+  "brandColor": "#000000",
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Sven Serlier",
+    "email": "sven@dypodex.com"
+  },
+  "drivers": [
+    {
+      "name": {
+        "en": "Color light bulb",
+        "nl": "Color lamp"
+      },
+      "class": "light",
+      "capabilities": [
+        "light_saturation",
+        "dim",
+        "light_hue",
+        "light_temperature",
+        "light_mode",
+        "onoff"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/color-light/assets/images/small.png",
+        "large": "/drivers/color-light/assets/images/large.png",
+        "xlarge": "/drivers/color-light/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login"
+        },
+        {
+          "id": "select_link"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": false
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "color-light"
+    },
+    {
+      "name": {
+        "en": "Door/window Sensor",
+        "nl": "Deur/raam sensor"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "alarm_contact",
+        "alarm_tamper"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/doorsensor/assets/images/small.png",
+        "large": "/drivers/doorsensor/assets/images/large.png",
+        "xlarge": "/drivers/doorsensor/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login"
+        },
+        {
+          "id": "select_link"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": false
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "id": "doorsensor"
+    }
+  ]
+}

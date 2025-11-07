@@ -1,0 +1,31 @@
+{
+  "id": "link.homewizard",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "HomeWizard Link",
+    "nl": "HomeWizard Link"
+  },
+  "description": {
+    "en": "Link your Link to Homey",
+    "nl": "Koppel je Link aan Homey"
+  },
+  "category": [
+    "security"
+  ],
+  "brandColor": "#000000",
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Sven Serlier",
+    "email": "sven@dypodex.com"
+  }
+}

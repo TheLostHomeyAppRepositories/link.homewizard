@@ -1,0 +1,14 @@
+{
+    "pair": {
+        "title": "HomeWizard Link",
+        "info": "This app only works with HomeWizard Link devices, for the Energy devices please use the HomeWizard app.",
+        "email": "Email address",
+        "password": "Password",
+        "failed": "Invalid credentials",
+        "save": "Save",
+        "saving": "Saving",
+        "select": "Select your Link",
+        "nolinks": "You have no Links!",
+        "error": "Something went wrong, try again"
+    }
+}

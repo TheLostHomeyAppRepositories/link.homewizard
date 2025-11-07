@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .error {
+        color: red;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <fieldset id="selectFieldset" class="homey-form-fieldset">
+      <legend class="homey-form-legend" data-i18n="pair.select">Select your Link</legend>
+      
+    </fieldset>
+    <p id="nolinks" class="error" data-i18n="pair.nolinks">You have no Links!</p>
+    <p id="failed" class="error" data-i18n="pair.error">Something went wrong, try again</p>
+
+    <button id="save" class="homey-button-primary-full" data-i18n="settings.save" onclick="saveClicked()">Save</button>
+    <script type="text/javascript">
+      const failedElement = document.getElementById('failed');
+      const saveButton = document.getElementById('save');
+      const noLinksError = document.getElementById('nolinks');
+      const fieldset = document.getElementById('selectFieldset');
+      let selected;
+      failedElement.style.display = 'none';
+        function setSave() {
+          saveButton.className = 'homey-button-primary-full';
+          saveButton.textContent = Homey.__('pair.save');
+        }
+
+        function setSaving() {
+          saveButton.className = 'homey-button-primary-full is-loading';
+          saveButton.textContent = Homey.__('pair.saving');
+        }
+        console.log('Requesting links from driver');
+        Homey.emit("getLinks", { test : "" }).then(function (result) {
+            console.log('Received links from driver', result);
+            if (result === false) {
+                failedElement.style.display = 'block';
+                saveButton.style.display = 'none';
+                return;
+            }
+            if (result.error) {
+                noLinksError.style.display = 'block';
+                saveButton.style.display = 'none';
+                return;
+            }
+            const links = result.links;
+        
+            links.forEach(({ endpoint, id }) => {
+                const wrapper = document.createElement('label');
+                wrapper.className = 'homey-form-radio';
+
+                const input = document.createElement('input');
+                input.className = 'homey-form-radio-input';
+                input.type = 'radio';
+                input.name = 'radio-example';
+                input.id = id;
+
+                const checkmark = document.createElement('span');
+                checkmark.className = 'homey-form-radio-checkmark';
+
+                const text = document.createElement('span');
+                text.className = 'homey-form-radio-text';
+                text.textContent = id;
+
+                // Handle click
+                input.addEventListener('change', () => {
+                    selected = { endpoint: endpoint, id: id };
+                });
+
+                // Assemble structure
+                wrapper.appendChild(input);
+                wrapper.appendChild(checkmark);
+                wrapper.appendChild(text);
+                fieldset.appendChild(wrapper);
+            });
+        });
+
+        function saveClicked() {
+            console.log('Save button clicked');
+          if (!selected || !selected.id || !selected.endpoint) {
+            console.log('No link selected');
+            return;
+          }
+          console.log('Selected link:', selected);
+          setSaving();
+          Homey.emit("selected", { id : selected.id, endpoint : selected.endpoint  }).then(function (result) {
+            if (result === false) {
+              failedElement.style.display = 'block';
+              setSave();
+              return;
+            }
+          });
+        }
+    </script>
+  </body>
+</html>
