@@ -95,6 +95,11 @@
       "connectivity": [
         "cloud"
       ],
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
       "images": {
         "small": "/drivers/doorsensor/assets/images/small.png",
         "large": "/drivers/doorsensor/assets/images/large.png",
