@@ -24,6 +24,10 @@
     "large": "/assets/images/large.png",
     "xlarge": "/assets/images/xlarge.png"
   },
+  "source": "https://github.com/smarthomesven/homey-homewizard-link",
+  "bugs": {
+    "url": "https://github.com/smarthomesven/homey-homewizard-link/issues"
+  },
   "author": {
     "name": "Sven Serlier",
     "email": "sven@dypodex.com"
