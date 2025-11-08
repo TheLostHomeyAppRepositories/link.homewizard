@@ -12,8 +12,8 @@
     "nl": "HomeWizard Link"
   },
   "description": {
-    "en": "Link your Link to Homey",
-    "nl": "Koppel je Link aan Homey"
+    "en": "Old devices, new possibilities",
+    "nl": "Oude apparaten, nieuwe mogelijkheden"
   },
   "category": [
     "security"
@@ -29,6 +29,7 @@
   "bugs": {
     "url": "https://github.com/smarthomesven/homey-homewizard-link/issues"
   },
+  "homeyCommunityTopicId": 145076,
   "author": {
     "name": "Sven Serlier",
     "email": "sven@dypodex.com"
