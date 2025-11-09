@@ -82,6 +82,11 @@
           "template": "add_devices"
         }
       ],
+      "repair": [
+        {
+          "id": "login"
+        }
+      ],
       "id": "color-light"
     },
     {
@@ -130,6 +135,11 @@
         {
           "id": "add_devices",
           "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login"
         }
       ],
       "id": "doorsensor"
