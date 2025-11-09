@@ -35,7 +35,6 @@
         }
         console.log('Requesting links from driver');
         Homey.emit("getLinks", { test : "" }).then(function (result) {
-            console.log('Received links from driver', result);
             if (result === false) {
                 failedElement.style.display = 'block';
                 saveButton.style.display = 'none';
@@ -48,7 +47,7 @@
             }
             const links = result.links;
         
-            links.forEach(({ endpoint, id }) => {
+            links.forEach(({ endpoint, id, name }) => {
                 const wrapper = document.createElement('label');
                 wrapper.className = 'homey-form-radio';
 
@@ -63,7 +62,7 @@
 
                 const text = document.createElement('span');
                 text.className = 'homey-form-radio-text';
-                text.textContent = id;
+                text.textContent = name + " (" + id + ")";
 
                 // Handle click
                 input.addEventListener('change', () => {

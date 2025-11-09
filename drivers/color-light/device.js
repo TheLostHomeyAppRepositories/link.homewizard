@@ -85,7 +85,6 @@ module.exports = class LightDevice extends Homey.Device {
         }
       }
 
-      this.log('Executing light update:', state);
       await this.homey.app.controlLight(this, state);
 
       this.pendingUpdate = null;

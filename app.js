@@ -24,7 +24,7 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
       });
       return response.data.token;
     } catch (error) {
-      this.log('Error fetching token:', error.message);
+      this.error('Error fetching token:', error.message);
       throw new Error("Error fetching token: " + error.message);
     }
   }
@@ -62,8 +62,6 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
 
         payload.color = color;
       }
-
-      this.log('Controlling light with payload:', JSON.stringify(payload, null, 2));
 
       await axios.post(`${linkEndpoint}/v42/devices/${deviceId}/state`, payload, {
         headers: { 'Authorization': `Bearer ${token}` }
@@ -122,12 +120,15 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
               } catch (err) {
                 this.error('Error refreshing token:', err.message);
                 for (const device of devices) {
-                  device.setUnavailable("The HomeWizard Link server isn't responding");
+                  device.setUnavailable("The HomeWizard server isn't responding");
                 }
                 continue;
               }
             } else {
               this.error(`Error fetching data from endpoint ${endpoint}:`, error.message);
+              for (const device of devices) {
+                device.setUnavailable("Your Link appears to be offline. Are both lights lit up steady blue?");
+              }
               continue;
             }
           }
