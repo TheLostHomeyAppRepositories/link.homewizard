@@ -10,5 +10,8 @@
   },
   "1.0.3": {
     "en": "Added repair view"
+  },
+  "1.0.4": {
+    "en": "Added tags"
   }
 }
