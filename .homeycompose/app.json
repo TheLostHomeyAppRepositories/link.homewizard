@@ -28,6 +28,16 @@
   "bugs": {
     "url": "https://github.com/smarthomesven/homey-homewizard-link/issues"
   },
+  "tags": {
+    "en": [
+      "smartwares",
+      "thuisveilig"
+    ],
+    "nl": [
+      "smartwares",
+      "thuisveilig"
+    ]
+  },
   "homeyCommunityTopicId": 145076,
   "author": {
     "name": "Sven Serlier",
