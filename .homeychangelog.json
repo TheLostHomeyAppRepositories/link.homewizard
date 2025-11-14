@@ -16,5 +16,8 @@
   },
   "1.0.5": {
     "en": "Minor improvements"
+  },
+  "1.0.6": {
+    "en": "Fix issue with door sensor and localized device unavailable messages."
   }
 }
