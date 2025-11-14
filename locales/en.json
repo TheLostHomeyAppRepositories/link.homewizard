@@ -10,5 +10,12 @@
     "select": "Select your Link",
     "nolinks": "You have no Links!",
     "error": "Something went wrong, try again"
+  },
+  "errors": {
+    "unreachable": "The light is unreachable. Is it plugged in?",
+    "generic": "Something went wrong while updating the device",
+    "linkoffline": "Your Link appears to be offline. Are both lights lit up steady blue?",
+    "token": "The HomeWizard server isn't responding",
+    "login": "Invalid credentials"
   }
 }

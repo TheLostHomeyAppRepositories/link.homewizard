@@ -10,5 +10,12 @@
     "select": "Selecteer je Link",
     "nolinks": "Je hebt geen Links!",
     "error": "Er is iets verkeerd gegaan, probeer het opnieuw"
+  },
+  "errors": {
+    "unreachable": "De lamp is onbereikbaar. Is deze aangesloten?",
+    "generic": "Er is iets verkeerd gegaan tijdens het bijwerken van de status",
+    "linkoffline": "Je Link lijkt offline te zijn. Is deze aangesloten en verbonden met internet?",
+    "token": "De HomeWizard-server reageert niet",
+    "login": "Ongeldige inloggegevens."
   }
 }

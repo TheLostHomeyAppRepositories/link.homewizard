@@ -9,6 +9,6 @@ module.exports = class LightDriver extends BaseHomeWizardDriver {
   }
 
   async onInit() {
-    this.log('Contact sensor driver has been initialized');
+    this.log('Color light driver has been initialized');
   }
 };

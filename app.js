@@ -25,6 +25,10 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
       return response.data.token;
     } catch (error) {
       this.error('Error fetching token:', error.message);
+      if (error.response && error.response.status === 401) {
+        device.setUnavailable(this.homey.__("errors.login"));
+        return;
+      }
       throw new Error("Error fetching token: " + error.message);
     }
   }
@@ -120,14 +124,14 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
               } catch (err) {
                 this.error('Error refreshing token:', err.message);
                 for (const device of devices) {
-                  device.setUnavailable("The HomeWizard server isn't responding");
+                  device.setUnavailable(this.homey.__("errors.token"));
                 }
                 continue;
               }
             } else {
               this.error(`Error fetching data from endpoint ${endpoint}:`, error.message);
               for (const device of devices) {
-                device.setUnavailable("Your Link appears to be offline. Are both lights lit up steady blue?");
+                device.setUnavailable(this.homey.__("errors.linkoffline"));
               }
               continue;
             }
@@ -141,11 +145,12 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
 
             try {
               if (deviceInfo.type === "hw_contact_sensor") {
+                device.setAvailable();
                 await device.setCapabilityValue('alarm_contact', deviceInfo.state.status === "opened");
                 await device.setCapabilityValue('alarm_tamper', deviceInfo.state.status === "tampered");
               } else if (deviceInfo.type === "hw_led_light_5ch") {
                 if (deviceInfo.status === "out_of_reach") {
-                  device.setUnavailable("The light is unreachable. Is it plugged in?");
+                  device.setUnavailable(this.homey.__("errors.unreachable"));
                   continue;
                 } else {
                   device.setAvailable();
@@ -173,7 +178,7 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
                 }
               }
             } catch (err) {
-              device.setUnavailable("Something went wrong while updating the device");
+              device.setUnavailable(this.homey.__("errors.generic"));
               this.error(`Error updating device ${device.getName()}:`, err.message);
               continue;
             }
