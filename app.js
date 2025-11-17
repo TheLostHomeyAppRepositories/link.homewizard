@@ -8,6 +8,8 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
   async onInit() {
     this.log('HomeWizard Link has been initialized');
     this.startPolling();
+    
+    // Register API endpoint for settings page
     this.homey.api.realtime('links-data-update', null);
   }
 
