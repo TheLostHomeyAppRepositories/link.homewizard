@@ -19,5 +19,8 @@
   },
   "1.0.6": {
     "en": "Fix issue with door sensor and localized device unavailable messages."
+  },
+  "1.0.7": {
+    "en": "Added settings page for retrieving home endpoint data"
   }
 }
