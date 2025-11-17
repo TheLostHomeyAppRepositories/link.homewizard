@@ -17,5 +17,16 @@
     "linkoffline": "Je Link lijkt offline te zijn. Is deze aangesloten en verbonden met internet?",
     "token": "De HomeWizard-server reageert niet",
     "login": "Ongeldige inloggegevens."
+  },
+  "settings": {
+    "title": "Debug",
+    "subtitle": "De volledige configuratie van je Links ophalen",
+    "loadButton": "Configuratie laden",
+    "copyButton": "Kopieren",
+    "copied": "Gekopieerd!",
+    "noLinks": "Je hebt geen Links",
+    "successMessage": "Configuratie opgehaald van __count__ Link(s)",
+    "unknownLink": "Onbekende Link",
+    "errorPrefix": "Fout: "
   }
 }

@@ -17,5 +17,16 @@
         "linkoffline": "Your Link appears to be offline. Are both lights lit up steady blue?",
         "token": "The HomeWizard server isn't responding",
         "login": "Invalid credentials"
+    },
+    "settings": {
+        "title": "Debug",
+        "subtitle": "Retrieve the full configuration of your Links",
+        "loadButton": "Retrieve configuration",
+        "copyButton": "Copy",
+        "copied": "Copied!",
+        "noLinks": "You have no Links",
+        "successMessage": "Successfully loaded data from __count__ Link(s)",
+        "unknownLink": "Unknown Link",
+        "errorPrefix": "Error: "
     }
 }

@@ -8,6 +8,7 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
   async onInit() {
     this.log('HomeWizard Link has been initialized');
     this.startPolling();
+    this.homey.api.realtime('links-data-update', null);
   }
 
   async getToken(linkId) {
@@ -78,6 +79,69 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
         this.error('Error controlling light:', error.message);
       }
       throw new Error("Error controlling light: " + error.message);
+    }
+  }
+
+  async getAllLinksData() {
+    try {
+      const email = this.homey.settings.get('email');
+      const password = this.homey.settings.get('password');
+      
+      if (!email || !password) {
+        return { error: 'No credentials found. Please pair a device first.' };
+      }
+
+      const basicAuth = "Basic " + Buffer.from(`${email}:${password}`).toString("base64");
+      
+      // Get all available links
+      const devicesResponse = await axios.get('https://api.homewizardeasyonline.com/v1/auth/devices', {
+        headers: { 'Authorization': `${basicAuth}` }
+      });
+      
+      const links = devicesResponse.data.devices.filter(d => d.type === "link");
+      
+      if (links.length === 0) {
+        return { error: 'No Links found in your account.' };
+      }
+
+      // Fetch data from each link
+      const linksData = await Promise.all(links.map(async (link) => {
+        try {
+          // Get token for this link
+          const tokenResponse = await axios.post('https://api.homewizardeasyonline.com/v1/auth/token', {
+            device: link.identifier
+          }, {
+            headers: { 'Authorization': `${basicAuth}` }
+          });
+          
+          const token = tokenResponse.data.token;
+          
+          // Get home data
+          const homeResponse = await axios.get(`${link.endpoint}/v42/home`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+          });
+          
+          return {
+            id: link.identifier,
+            name: link.name,
+            endpoint: link.endpoint,
+            data: homeResponse.data
+          };
+        } catch (error) {
+          this.error(`Error fetching data for link ${link.identifier}:`, error.message);
+          return {
+            id: link.identifier,
+            name: link.name,
+            endpoint: link.endpoint,
+            error: error.message
+          };
+        }
+      }));
+
+      return { links: linksData };
+    } catch (error) {
+      this.error('Error in getAllLinksData:', error.message);
+      return { error: error.message };
     }
   }
 
