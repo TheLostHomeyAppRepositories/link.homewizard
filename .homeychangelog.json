@@ -25,5 +25,8 @@
   },
   "1.0.8": {
     "en": "Added smoke detector and water leakage detector"
+  },
+  "1.0.9": {
+    "en": "Fixed tested state for smoke and water detectors"
   }
 }
