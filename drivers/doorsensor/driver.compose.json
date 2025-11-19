@@ -6,7 +6,8 @@
   "class": "sensor",
   "capabilities": [
     "alarm_contact",
-    "alarm_tamper"
+    "alarm_tamper",
+    "alarm_battery"
   ],
   "platforms": [
     "local"

@@ -5,7 +5,8 @@
   },
   "class": "smokealarm",
   "capabilities": [
-    "alarm_smoke"
+    "alarm_smoke",
+    "alarm_battery"
   ],
   "platforms": [
     "local"

@@ -254,12 +254,21 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
             try {
               if (deviceInfo.type === "hw_contact_sensor") {
                 device.setAvailable();
+                if (device.hasCapability('alarm_battery')) {
+                  await device.setCapabilityValue('alarm_battery', deviceInfo.state.low_battery === true);
+                }
                 await device.setCapabilityValue('alarm_contact', deviceInfo.state.status === "opened");
                 await device.setCapabilityValue('alarm_tamper', deviceInfo.state.status === "tampered");
               } else if (deviceInfo.type === "sw_leak_detector") {
                 device.setAvailable();
+                if (device.hasCapability('alarm_battery')) {
+                  await device.setCapabilityValue('alarm_battery', deviceInfo.state.low_battery === true);
+                }
                 await device.setCapabilityValue('alarm_water', deviceInfo.state.status !== "ok" && deviceInfo.state.status !== "tested");
               } else if (deviceInfo.type === "sw_smoke_detector") {
+                if (device.hasCapability('alarm_battery')) {
+                  await device.setCapabilityValue('alarm_battery', deviceInfo.state.low_battery === true);
+                }
                 device.setAvailable();
                 await device.setCapabilityValue('alarm_smoke', deviceInfo.state.status !== "ok" && deviceInfo.state.status !== "tested");
               } else if (deviceInfo.type === "hw_led_light_5ch") {

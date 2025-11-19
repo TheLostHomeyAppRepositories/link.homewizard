@@ -5,7 +5,8 @@
   },
   "class": "sensor",
   "capabilities": [
-    "alarm_water"
+    "alarm_water",
+    "alarm_battery"
   ],
   "platforms": [
     "local"
