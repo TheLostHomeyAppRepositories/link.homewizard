@@ -226,6 +226,11 @@
       "connectivity": [
         "cloud"
       ],
+      "energy": {
+        "batteries": [
+          "CR123A"
+        ]
+      },
       "images": {
         "small": "/drivers/smoke-detector/assets/images/small.png",
         "large": "/drivers/smoke-detector/assets/images/large.png",
