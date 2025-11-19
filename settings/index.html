@@ -24,17 +24,13 @@
         const linksContainer = document.getElementById('linksContainer');
 
         loadButton.addEventListener('click', function() {
-          // Clear previous messages and data
           messageContainer.innerHTML = '';
           linksContainer.innerHTML = '';
 
-          // Show loading state
           loadButton.className = 'homey-button-primary-full is-loading';
           loadButton.disabled = true;
 
-          // Make API call to get links data
           Homey.api('GET', '/links-data', null, function(err, result) {
-            // Reset button state
             loadButton.className = 'homey-button-primary-full';
             loadButton.disabled = false;
 
@@ -53,11 +49,9 @@
               return;
             }
 
-            // Display success message
             messageContainer.innerHTML = '<p style="color: #155724; padding: 12px; background: #d4edda; border-radius: 5px; margin-bottom: 20px;">' + 
               Homey.__('settings.successMessage', { count: result.links.length }) + '</p>';
 
-            // Display each Link's data
             result.links.forEach(function(link) {
               const section = document.createElement('fieldset');
               section.className = 'homey-form-fieldset';
@@ -89,7 +83,6 @@
               copyButton.addEventListener('click', function() {
                 const text = link.error ? textarea.value : JSON.stringify(link.data, null, 2);
                 
-                // Create temporary textarea for copying
                 const tempTextarea = document.createElement('textarea');
                 tempTextarea.value = text;
                 tempTextarea.style.position = 'fixed';
