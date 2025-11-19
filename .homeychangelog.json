@@ -22,5 +22,8 @@
   },
   "1.0.7": {
     "en": "Added settings page for retrieving home endpoint data"
+  },
+  "1.0.8": {
+    "en": "Added smoke detector and water leakage detector"
   }
 }
