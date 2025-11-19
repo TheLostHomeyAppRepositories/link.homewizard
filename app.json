@@ -162,6 +162,57 @@
     },
     {
       "name": {
+        "en": "Multi white light bulb",
+        "nl": "Multi wit lamp"
+      },
+      "class": "light",
+      "capabilities": [
+        "light_temperature",
+        "dim",
+        "onoff"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/multi-white-e27/assets/images/small.png",
+        "large": "/drivers/multi-white-e27/assets/images/large.png",
+        "xlarge": "/drivers/multi-white-e27/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login"
+        },
+        {
+          "id": "select_link"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": false
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login"
+        }
+      ],
+      "id": "multi-white-e27"
+    },
+    {
+      "name": {
         "en": "Smoke detector",
         "nl": "Rookmelder"
       },

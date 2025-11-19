@@ -84,6 +84,48 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
     }
   }
 
+  async controlWhiteLight(device, state) {
+    try {
+      const linkEndpoint = device.getStoreValue('linkEndpoint');
+      const token = device.getStoreValue('token');
+      const deviceId = device.getStoreValue('deviceId');
+
+      if (!linkEndpoint || !token || !deviceId) {
+        throw new Error("Missing device information for controlling light");
+      }
+
+      const payload = {
+        status: state.onoff ? "on" : "off",
+      };
+
+      if (state.onoff) {
+        const color = {};
+        
+      
+        color.hue = Math.round(state.hue * 200);
+        color.saturation = 0;
+        
+        if (state.dim !== undefined) {
+          color.brightness = Math.round(state.dim * 100);
+        }
+
+        payload.color = color;
+      }
+
+      await axios.post(`${linkEndpoint}/v42/devices/${deviceId}/state`, payload, {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+
+    } catch (error) {
+      if (error.response) {
+        this.error('Error controlling light:', error.response.status, error.response.data);
+      } else {
+        this.error('Error controlling light:', error.message);
+      }
+      throw new Error("Error controlling light: " + error.message);
+    }
+  }
+
   async getAllLinksData() {
     try {
       const email = this.homey.settings.get('email');
@@ -247,6 +289,25 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
                     await device.setCapabilityValue('light_saturation', saturation);
                     await device.setCapabilityValue('light_mode', 'color');
                   }
+                }
+              } else if (deviceInfo.type === "hw_led_light_2ch") {
+                if (deviceInfo.status === "out_of_reach") {
+                  device.setUnavailable(this.homey.__("errors.unreachable"));
+                  continue;
+                } else {
+                  device.setAvailable();
+                }
+                const isOn = deviceInfo.state.status === "on";
+                await device.setCapabilityValue('onoff', isOn);
+
+                if (isOn && deviceInfo.state.color) {
+                  const brightness = deviceInfo.state.color.brightness / 100;
+                  const saturation = deviceInfo.state.color.saturation / 100;
+                  const hue = deviceInfo.state.color.hue;
+
+                  await device.setCapabilityValue('dim', brightness);
+                  const temperature = hue / 200;
+                  await device.setCapabilityValue('light_temperature', temperature);
                 }
               }
             } catch (err) {
