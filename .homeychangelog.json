@@ -34,5 +34,8 @@
   },
   "1.1.1": {
     "en": "Updated smoke detector images and added battery info to the smoke detector"
+  },
+  "1.1.2": {
+    "en": "Added battery alarm"
   }
 }
