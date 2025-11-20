@@ -14,4 +14,5 @@ Since I only have the Color bulb and the door sensor, I need your help to get th
 - Socket
 - Plug-in dimmer
 - CO detector
+
 Or any other device that works with the HomeWizard Link app, please let me know in the [forum topic](https://community.homey.app/t/app-pro-homewizard-link/145076) so that I can add support for it.
