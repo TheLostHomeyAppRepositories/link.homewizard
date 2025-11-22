@@ -16,7 +16,9 @@
     "generic": "Something went wrong while updating the device",
     "linkoffline": "Your Link appears to be offline. Are both lights lit up steady blue?",
     "token": "The HomeWizard server isn't responding",
-    "login": "Invalid credentials"
+    "login": "Invalid credentials",
+    "input": "Enter your username",
+    "copy": "Failed to copy to clipboard"
   },
   "settings": {
     "title": "Debug",
@@ -27,6 +29,13 @@
     "noLinks": "You have no Links",
     "successMessage": "Successfully loaded data from __count__ Link(s)",
     "unknownLink": "Unknown Link",
-    "errorPrefix": "Error: "
+    "errorPrefix": "Error: ",
+    "send": "Send",
+    "community": "Homey Community Forum username",
+    "messagelabel": "Message",
+    "message": "If you have any other information that you think might be useful for the developer, enter it here",
+    "cancel": "Cancel",
+    "sent": "Your configuration has been sent! You can mention the ID below on the forum, only the developer can use it to view your configuration",
+    "sending": "Sending"
   }
 }

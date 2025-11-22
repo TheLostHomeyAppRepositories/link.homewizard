@@ -16,7 +16,9 @@
     "generic": "Er is iets verkeerd gegaan tijdens het bijwerken van de status",
     "linkoffline": "Je Link lijkt offline te zijn. Is deze aangesloten en verbonden met internet?",
     "token": "De HomeWizard-server reageert niet",
-    "login": "Ongeldige inloggegevens."
+    "login": "Ongeldige inloggegevens.",
+    "input": "Voer je gebruikersnaam in",
+    "copy": "Kopieren naar klembord mislukt"
   },
   "settings": {
     "title": "Debug",
@@ -27,6 +29,13 @@
     "noLinks": "Je hebt geen Links",
     "successMessage": "Configuratie opgehaald van __count__ Link(s)",
     "unknownLink": "Onbekende Link",
-    "errorPrefix": "Fout: "
+    "errorPrefix": "Fout: ",
+    "send": "Verzenden",
+    "community": "Homey Community Forum-gebruikersnaam",
+    "messagelabel": "Bericht",
+    "message": "Als je extra informatie wilt achterlaten voor de ontwikkelaar, kan je dat hier invullen.",
+    "cancel": "Annuleren",
+    "sent": "Je configuratie is verzonden! Je kan de ID hieronder posten op het forum (in de app topic), omdat alleen de ontwikkelaar je configuratie kan bekijken met deze ID.",
+    "sending": "Verzenden"
   }
 }
