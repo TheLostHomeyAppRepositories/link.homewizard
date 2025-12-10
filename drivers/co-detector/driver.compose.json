@@ -1,0 +1,50 @@
+{
+  "name": {
+    "en": "Carbon monoxide detector",
+    "nl": "Koolmonoxidemelder"
+  },
+  "class": "sensor",
+  "capabilities": [
+    "alarm_battery",
+    "alarm_co"
+  ],
+  "platforms": [
+    "local"
+  ],
+  "connectivity": [
+    "cloud"
+  ],
+  "energy": {
+    "batteries": [
+      "AA", "AA"
+    ]
+  },
+  "images": {
+    "small": "{{driverAssetsPath}}/images/small.png",
+    "large": "{{driverAssetsPath}}/images/large.png",
+    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+  },
+  "pair": [
+    {
+      "id": "login"
+    },
+    {
+      "id": "select_link"
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": { "next": "add_devices" },
+      "options": { "singular": false }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
+    }
+  ],
+  "repair": [
+    {
+      "id": "login"
+    }
+  ]
+}

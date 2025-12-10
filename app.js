@@ -266,11 +266,15 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
                 }
                 await device.setCapabilityValue('alarm_water', deviceInfo.state.status !== "ok" && deviceInfo.state.status !== "tested");
               } else if (deviceInfo.type === "sw_smoke_detector") {
+                device.setAvailable();
                 if (device.hasCapability('alarm_battery')) {
                   await device.setCapabilityValue('alarm_battery', deviceInfo.state.low_battery === true);
                 }
-                device.setAvailable();
                 await device.setCapabilityValue('alarm_smoke', deviceInfo.state.status !== "ok" && deviceInfo.state.status !== "tested");
+              } else if (deviceInfo.type === "sw_mesh_smoke_detector") {
+                device.setAvailable();
+                await device.setCapabilityValue('alarm_battery', deviceInfo.state.low_battery === true);
+                await device.setCapabilityValue('alarm_co', deviceInfo.state.status !== "ok" && deviceInfo.state.status !== "tested");
               } else if (deviceInfo.type === "hw_led_light_5ch") {
                 if (deviceInfo.status === "out_of_reach") {
                   device.setUnavailable(this.homey.__("errors.unreachable"));

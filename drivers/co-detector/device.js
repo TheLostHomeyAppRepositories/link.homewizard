@@ -2,24 +2,20 @@
 
 const Homey = require('homey');
 
-module.exports = class ContactDevice extends Homey.Device {
+module.exports = class CODevice extends Homey.Device {
 
   /**
    * onInit is called when the device is initialized.
    */
   async onInit() {
-    this.log('Contact sensor device has been initialized');
-    if (!this.hasCapability('alarm_battery')) {
-      this.log('Device has no alarm_battery capability, adding it now.');
-      await this.addCapability('alarm_battery');
-    }
+    this.log('CO detector device has been initialized');
   }
 
   /**
    * onAdded is called when the user adds the device, called just after pairing.
    */
   async onAdded() {
-    this.log('MyDevice has been added');
+    this.log('CO detector has been added');
   }
 
   /**
@@ -31,7 +27,7 @@ module.exports = class ContactDevice extends Homey.Device {
    * @returns {Promise<string|void>} return a custom message that will be displayed
    */
   async onSettings({ oldSettings, newSettings, changedKeys }) {
-    this.log('MyDevice settings where changed');
+    this.log('CO detector settings where changed');
   }
 
   /**
@@ -40,14 +36,14 @@ module.exports = class ContactDevice extends Homey.Device {
    * @param {string} name The new name
    */
   async onRenamed(name) {
-    this.log('MyDevice was renamed');
+    this.log('CO detector was renamed');
   }
 
   /**
    * onDeleted is called when the user deleted the device.
    */
   async onDeleted() {
-    this.log('MyDevice has been deleted');
+    this.log('CO detector has been deleted');
   }
 
 };
