@@ -1,6 +1,3 @@
 Verbind je Link met Homey.
 
-Momenteel ondersteund:
-- Deursensor: contact alarm, sabotage alarm
-- Kleuren lamp: schakelen, dimmen, kleurtemperatuur en kleur (RGB)
-Als je apparaat hier niet tussen staat, ga dan naar het forum topic om een apparaat aan te vragen.
+Als je apparaat niet wordt ondersteund, ga dan naar het forum topic om ondersteuning voor een apparaat aan te vragen.
