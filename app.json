@@ -329,6 +329,55 @@
     },
     {
       "name": {
+        "en": "Thermometer"
+      },
+      "class": "sensor",
+      "capabilities": [
+        "measure_temperature",
+        "measure_humidity"
+      ],
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "cloud"
+      ],
+      "images": {
+        "small": "/drivers/thermometer/assets/images/small.png",
+        "large": "/drivers/thermometer/assets/images/large.png",
+        "xlarge": "/drivers/thermometer/assets/images/xlarge.png"
+      },
+      "pair": [
+        {
+          "id": "login"
+        },
+        {
+          "id": "select_link"
+        },
+        {
+          "id": "list_devices",
+          "template": "list_devices",
+          "navigation": {
+            "next": "add_devices"
+          },
+          "options": {
+            "singular": false
+          }
+        },
+        {
+          "id": "add_devices",
+          "template": "add_devices"
+        }
+      ],
+      "repair": [
+        {
+          "id": "login"
+        }
+      ],
+      "id": "thermometer"
+    },
+    {
+      "name": {
         "en": "Water leakage detector",
         "nl": "Waterlekkagemelder"
       },
