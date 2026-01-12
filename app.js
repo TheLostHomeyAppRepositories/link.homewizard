@@ -274,7 +274,12 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
               } else if (deviceInfo.type === "sw_mesh_smoke_detector") {
                 device.setAvailable();
                 await device.setCapabilityValue('alarm_battery', deviceInfo.state.low_battery === true);
+                if (device.hasCapability('alarm_co')) {
                 await device.setCapabilityValue('alarm_co', deviceInfo.state.status !== "ok" && deviceInfo.state.status !== "tested");
+                }
+                if (device.hasCapability('alarm_smoke')) {
+                await device.setCapabilityValue('alarm_smoke', deviceInfo.state.status !== "ok" && deviceInfo.state.status !== "tested");
+                }
               } else if (deviceInfo.type === "hw_thermometer") {
                 device.setAvailable();
                 await device.setCapabilityValue('measure_temperature', deviceInfo.temperature);
