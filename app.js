@@ -8,8 +8,6 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
   async onInit() {
     this.log('HomeWizard Link has been initialized');
     this.startPolling();
-    
-    // Register API endpoint for settings page
     this.homey.api.realtime('links-data-update', null);
   }
 
@@ -137,7 +135,6 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
 
       const basicAuth = "Basic " + Buffer.from(`${email}:${password}`).toString("base64");
       
-      // Get all available links
       const devicesResponse = await axios.get('https://api.homewizardeasyonline.com/v1/auth/devices', {
         headers: { 'Authorization': `${basicAuth}` }
       });
@@ -148,10 +145,8 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
         return { error: 'No Links found in your account.' };
       }
 
-      // Fetch data from each link
       const linksData = await Promise.all(links.map(async (link) => {
         try {
-          // Get token for this link
           const tokenResponse = await axios.post('https://api.homewizardeasyonline.com/v1/auth/token', {
             device: link.identifier
           }, {
@@ -160,7 +155,6 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
           
           const token = tokenResponse.data.token;
           
-          // Get home data
           const homeResponse = await axios.get(`${link.endpoint}/v42/home`, {
             headers: { 'Authorization': `Bearer ${token}` }
           });
@@ -190,7 +184,7 @@ module.exports = class HomeWizardLinkApp extends Homey.App {
   }
 
   async startPolling() {
-    this.pollInterval = setInterval(async () => {
+    this.pollInterval = this.homey.setInterval(async () => {
       try {
         const drivers = this.homey.drivers.getDrivers();
         let allDevices = [];
