@@ -16,22 +16,37 @@
       <div class="homey-form-group">
         <label class="homey-form-label" for="email" data-i18n="pair.email">Email address</label>
         <input class="homey-form-input" id="email" type="text" value="" />
+        <p id="noemail" style="display: none;" class="error" data-i18n="pair.noemail"></p>
       </div>
       <div class="homey-form-group">
         <label class="homey-form-label" for="password" data-i18n="pair.password">Password</label>
         <input class="homey-form-input" id="password" type="password" value="" />
+        <p id="nopassword" style="display: none;" class="error" data-i18n="pair.nopassword"></p>
       </div>
     </fieldset>
-    <p id="failed" class="error" data-i18n="pair.failed">Invalid credentials</p>
-
+    <p id="failed" style="display: none;" class="error" data-i18n="pair.failed">Invalid credentials</p>
     <button id="save" class="homey-button-primary-full" data-i18n="settings.save">Save</button>
     <script type="text/javascript">
       const emailElement = document.getElementById('email');
       const passwordElement = document.getElementById('password');
       const errorElement = document.getElementById('failed');
+      const noEmailElement = document.getElementById('noemail');
+      const noPasswordElement = document.getElementById('nopassword');
       const saveElement = document.getElementById('save');
-      errorElement.style.display = 'none';
         saveElement.addEventListener("click", function (e) {
+          errorElement.style.display = 'none';
+          noEmailElement.style.display = 'none';
+          noPasswordElement.style.display = 'none';
+          if (!emailElement.value) {
+            noEmailElement.style.display = 'block';
+            setSave();
+            return;
+          }
+          if (!passwordElement.value) {
+            noPasswordElement.style.display = 'block';
+            setSave();
+            return;
+          }
           setSaving();
           const email = emailElement.value;
           const password = passwordElement.value;

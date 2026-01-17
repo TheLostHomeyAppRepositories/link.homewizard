@@ -5,6 +5,8 @@
         "email": "Email address",
         "password": "Password",
         "failed": "Invalid credentials",
+        "noemail": "Enter an email address",
+        "nopassword": "Enter a password",
         "save": "Save",
         "saving": "Saving",
         "select": "Select your Link",

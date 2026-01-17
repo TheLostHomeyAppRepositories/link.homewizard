@@ -9,7 +9,9 @@
     "saving": "Saving",
     "select": "Select your Link",
     "nolinks": "You have no Links!",
-    "error": "Something went wrong, try again"
+    "error": "Something went wrong, try again",
+    "noemail": "Enter an email address",
+    "nopassword": "Enter a password"
   },
   "errors": {
     "unreachable": "The light is unreachable. Is it plugged in?",

@@ -5,6 +5,8 @@
         "email": "Emailadres",
         "password": "Wachtwoord",
         "failed": "Ongeldige inloggegevens",
+        "noemail": "Voer het emailadres in",
+        "nopassword": "Voer het wachtwoord in",
         "save": "Opslaan",
         "saving": "Opslaan",
         "select": "Selecteer je Link",

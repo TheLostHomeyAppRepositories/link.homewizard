@@ -9,7 +9,9 @@
     "saving": "Opslaan",
     "select": "Selecteer je Link",
     "nolinks": "Je hebt geen Links!",
-    "error": "Er is iets verkeerd gegaan, probeer het opnieuw"
+    "error": "Er is iets verkeerd gegaan, probeer het opnieuw",
+    "noemail": "Voer je emailadres in",
+    "nopassword": "Voer je wachtwoord in"
   },
   "errors": {
     "unreachable": "De lamp is onbereikbaar. Is deze aangesloten?",
