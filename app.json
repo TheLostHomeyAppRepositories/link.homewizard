@@ -342,6 +342,11 @@
       "connectivity": [
         "cloud"
       ],
+      "energy": {
+        "batteries": [
+          "AA"
+        ]
+      },
       "images": {
         "small": "/drivers/thermometer/assets/images/small.png",
         "large": "/drivers/thermometer/assets/images/large.png",
