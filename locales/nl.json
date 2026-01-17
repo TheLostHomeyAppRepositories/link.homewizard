@@ -10,8 +10,8 @@
     "select": "Selecteer je Link",
     "nolinks": "Je hebt geen Links!",
     "error": "Er is iets verkeerd gegaan, probeer het opnieuw",
-    "noemail": "Voer je emailadres in",
-    "nopassword": "Voer je wachtwoord in"
+    "noemail": "Voer het emailadres in",
+    "nopassword": "Voer het wachtwoord in"
   },
   "errors": {
     "unreachable": "De lamp is onbereikbaar. Is deze aangesloten?",

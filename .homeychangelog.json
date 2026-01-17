@@ -61,5 +61,8 @@
   },
   "1.3.3": {
     "en": "Added icon for thermometer"
+  },
+  "1.3.4": {
+    "en": "Improved pairing views"
   }
 }
